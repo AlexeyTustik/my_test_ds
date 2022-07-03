@@ -5,9 +5,9 @@ from rest_framework.response import Response
 
 class ReviewClassification(APIView):
     def post(self, request):
+        data = request.data
         if not 'text' in data:
             return Response('no text in payload', status=400)
-        data = request.data
         text = data['text']
         model = ApiConfig.model
         text_stemmed = ApiConfig.stem_text(text)
