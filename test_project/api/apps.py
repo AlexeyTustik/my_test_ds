@@ -11,6 +11,6 @@ class ApiConfig(AppConfig):
     stemmer = PorterStemmer()
 
     def stem_text(text):
-        words = re.sub('[^a-zA-Z]',' ', text).lower().split()
-        words_stemmed = [ApiConfig.stemmer.stem(word) for word in words] 
+        words = re.sub('[^a-zA-Z]', ' ', text).lower().split()
+        words_stemmed = [ApiConfig.stemmer.stem(word) for word in words]
         return ' '.join(words_stemmed)

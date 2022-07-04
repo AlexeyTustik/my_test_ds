@@ -14,5 +14,6 @@ class ReviewClassification(APIView):
         if text_stemmed == '':
             return Response('no words in text', status=400)
         result = model.predict([text_stemmed])
-        result_dict = {'score': result[0], 'type' : 'positive' if result > 5 else 'negative'}
+        result_dict = {
+            'score': result[0], 'type': 'positive' if result > 5 else 'negative'}
         return Response(result_dict, status=200)
