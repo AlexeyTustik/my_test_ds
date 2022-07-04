@@ -9,8 +9,9 @@ class ReviewClassification(APIView):
         if not 'text' in data:
             return Response('no text in payload', status=400)
         text = data['text']
-        model = ApiConfig.model
+
         text_stemmed = ApiConfig.stem_text(text)
+        model = ApiConfig.model
         if text_stemmed == '':
             return Response('no words in text', status=400)
         result = model.predict([text_stemmed])
